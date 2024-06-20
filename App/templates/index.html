@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEXAUTO || ENCUENTRA TU AUTO AL MEJOR PRECIO</title>
+    <link rel="icon" href="/static/images/logo.png" type="image/png">
+    <!-- Enlace a fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Enlace a Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-100 p-4">
+    <!-- Barra de navegacion -->
+    <nav class="bg-white/80 backdrop-blur-xl shadow-sm shadow-gray-500 px-2 py-2.5 
+    fixed w-full z-20 top-0 left-0 border-gray-100"
+    style="height: 62px">
+        <div class="container grid grid-cols-3 items-center mx-auto my-auto">
+            <a href="/" class="flex items-center ml-5">
+                <img
+                  src="/static/images/logo.png"
+                  class="h-10 mr-3 rounded-xl"
+                  alt="Logo"
+                />
+                <span
+                class="self-center text-base md:text-xl font-light text-gray-600 whitespace-nowrap
+                 mt-1 mr-0">
+                APEXAUTO
+                </span>
+            </a>
+            <!-- Buscador por nombre -->
+            <div class="flex items-center">
+                <i class="fa-solid fa-magnifying-glass mr-2 text-gray-500"></i>
+                <input id="searchInput" 
+                type="text" placeholder="Buscar autos, marcas, precios, color..." 
+                class="p-2 rounded-3xl border border-gray-400 bg-gray-100 w-full ">
+            </div>
+            <!-- Fin de buscador por nombre -->
+            <a href="/login/" class="flex items-center justify-center ml-auto mr-5">
+                <h1 class="text-gray-700 font-light text-lg text-center items-center">
+                <i class="fa-regular fa-circle-user text-2xl mr-2"></i>Mi Cuenta</h1>
+            </a>
+        </div>
+    </nav>
+    <!-- Fin barra de navegacion -->
+
+    <!-- filtros -->
+    <div class="pt-16 m-0">
+        <div class="container">
+            <button
+                id="filter-button"
+                data-collapse-toggle="navbar-sticky"
+                type="button"
+                class="inline-flex items-center p-2 text-sm text-white rounded-lg lg:hidden 
+                focus:outline-none focus:ring-2 focus:ring-gray-200 bg-black border-2 
+                border-slate-300 mb-4"
+                aria-controls="navbar-sticky"
+                aria-expanded="true"
+            >
+                <span
+                class="self-center text-basefont-light text-white whitespace-nowrap mr-2">
+                Filtro
+                </span>
+                <i class="fa-solid fa-filter"></i>
+            </button>
+
+            <form method="GET" action="/" 
+            class="mb-4 mr-0 ml-0 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 bg-slate-100
+            rounded-lg px-2 py-2.5 w-full lg:grid hidden"
+            id="navbar-sticky">
+                
+                <select id="color" name="color" 
+                class="appearance-none h-16 border border-gray-500 rounded-lg bg-gray-100 py-3 px-4
+                focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400 outline-none text-gray-700">
+                    <option value="">Todos los colores</option>
+                    <option value="Rojo">Rojo</option>
+                    <option value="Azul">Azul</option>
+                    <option value="Negro">Negro</option>
+                    <option value="Plata">Plata</option>
+                    <option value="Blanco">Blanco</option>
+                </select>
+
+                <select id="marca" name="marca"
+                class="appearance-none h-16 border border-gray-500 rounded-lg bg-gray-100 py-3 px-4
+                focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400 outline-none text-gray-700">
+                    <option value="">Todas las marcas</option>
+                    <option value="mazda">Mazda</option>
+                    <option value="bmw">BMW</option>
+                    <option value="mercedes">Mercedes</option>
+                    <option value="volkswagen">Volkswagen</option>
+                </select>
+
+                <select id="fecha" name="fecha" 
+                class="appearance-none h-16 border border-gray-500 rounded-lg bg-gray-100 py-3 px-4
+                focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400 outline-none text-gray-700">
+                    <option value="">Todas las fechas</option>
+                    <option value="2016-01-01">2016</option>
+                    <option value="2017-01-01">2017</option>
+                    <option value="2018-01-01">2018</option>
+                    <option value="2019-01-01">2019</option>
+                    <option value="2020-01-01">2020</option>
+                    <option value="2021-01-01">2021</option>
+                    <option value="2022-01-01">2022</option>
+                    <option value="2023-01-01">2023</option>
+                    <option value="2024-01-01">2024</option>
+                </select>
+
+                <section class="grid grid-rows-2 h-16">
+                    <input type="text" 
+                    id="lim_price" name="lim_price" placeholder="Limite de Precio..." 
+                    class="appearance-none mb-1 p-1 px-3 bg-white border border-gray-500 rounded-lg w-full
+                    focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400 outline-none">
+
+                    <label for="lim_price" class="flex items-center justify-center mt-1">
+                        <i class="fa-solid fa-arrow-down-short-wide mr-2 flex relative"></i>
+                        <select name="order_price" id="order_price" 
+                        class="appearance-none p-1 px-2 border border-gray-500 rounded-lg bg-gray-100 w-full
+                        focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400 outline-none text-gray-700">
+                            <option value="">Por orden de precio</option>
+                            <option value="ASC">Menor a mayor</option>
+                            <option value="DESC">Mayor a menor</option>
+                        </select>
+                    </label>
+
+                </section>
+            
+                <button type="submit" 
+                class="border-2 border-black bg-gray-900 rounded-lg font-normal text-white
+                hover:border-indigo-500 py-1 px-5 w-full ">
+                Filtrar</button>
+            </form>
+        </div>
+    </div>
+    <!-- Fin filtros -->
+
+    <!-- Contenedores y cards de autos -->
+    <div class="container mx-auto border border-gray-300 rounded-md p-4">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {% for auto in auto %}
+            <div class="car-card bg-white rounded-xl shadow-lg text-gray-700">
+                <img src="{{ auto.img }}" alt="{{ auto.Modelo }}" class="w-full h-44 relative 
+                rounded-t-lg mb-0 object-cover object-center"/>
+                <div class="p-4">
+                    <h2 class="car-name text-xl font-bold mb-2 mt-2">{{ auto.Modelo }}</h2>
+                    <hr class="border-1 border-slate-200 mb-1">
+                    <p class="car-marca mb-1"><strong>Marca:</strong> {{ auto.Marca }}</p>
+                    <p class="car-precio mb-1"><strong>Precio:</strong> ${{ auto.Precio }}</p>
+                    <p class="car-fecha mb-1"><strong>Fecha:</strong> {{ auto.fecha }}</p>
+                    <p class="car-color mb-1"><strong>Color:</strong> {{ auto.Color }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- Fin contenedores -->
+
+    <!-- Enlace a Scripts -->
+    <script src="{{ url_for('static', filename='javascript/scripts.js') }}"></script>
+</body>
+</html>
