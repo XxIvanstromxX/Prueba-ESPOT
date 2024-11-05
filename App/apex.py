@@ -5,10 +5,10 @@ app = Flask(__name__)
 
 # Coneccion de Base de Datos
 db_config = {
-    'user': 'root',
-    'password': 'mEMA241202',
+    'user': ' ',
+    'password': ' ',
     'host': 'localhost',
-    'database': 'ApexAuto',
+    'database': ' ',
     'port': (3306)
 }
 
